@@ -43,7 +43,9 @@ $ sudo systemctl restart docker
 
 ## 测试安装成功
 
-  $ sudo docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
+```bash
+$ sudo docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
+```
 
   显示如下：
   版本信息： NVIDIA-SMI 515105.01Driver Version: 515.105.01CUDA Version: 11.7
