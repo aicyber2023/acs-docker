@@ -1,0 +1,167 @@
+version: '3'
+services:
+    acs-web:
+      container_name: acs-web
+      image: aicyber2023/acs-web:v0.0.1
+      environment:
+        - TZ=Asia/Shanghai
+      ports:
+        - "28001:28001"
+        - "28002:28002"
+      links:
+        - acs-api
+      depends_on:
+        - acs-api
+      restart: always
+
+    acs-api:
+      container_name: acs-api
+      image: aicyber2023/acs-api:v0.0.1
+      environment:
+        - TZ=Asia/Shanghai
+      volumes:
+        - ./acs-api/upload:/opt/app/upload
+      ports:
+        - "28005:28005"
+      links:
+        - acs-redis
+        - acs-mysql
+        - acs-pychat
+      depends_on:
+        - acs-mysql
+        - acs-redis
+        - acs-pychat
+      restart: always
+
+    acs-redis:
+      container_name: acs-redis
+      image: aicyber2023/redis:4.0.1
+      environment:
+        - TZ=Asia/Shanghai
+      volumes:
+        - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+        - ./redis/data/:/data/
+        - ./redis/log/:/var/log/redis/
+      command: redis-server /usr/local/etc/redis/redis.conf 
+      restart: always
+
+    acs-mysql:
+      image: aicyber2023/mysql:5.7
+      container_name: acs-mysql
+      restart: always
+      environment:
+       -  MYSQL_ROOT_PASSWORD=acsmysql23456
+       -  TZ=Asia/Shanghai
+      command:
+        --character-set-server=utf8mb4
+        --collation-server=utf8mb4_general_ci
+        --default-authentication-plugin=mysql_native_password
+        --explicit_defaults_for_timestamp=true
+        --lower_case_table_names=1
+        --max_allowed_packet=128M;
+      volumes:
+        - ./mysql/init:/docker-entrypoint-initdb.d
+        - ./mysql/data:/var/lib/mysql
+
+    acs-pychat:
+      container_name: acs-pychat
+      image: aicyber2023/acs-pychat:v0.0.1
+      links:
+        - milvus-standalone
+      depends_on:
+        - "milvus-standalone"
+        - "text-generation-webui"
+
+    milvus-etcd:
+      container_name: milvus-etcd
+      image: aicyber2023/etcd:v3.5.5
+      environment:
+        - ETCD_AUTO_COMPACTION_MODE=revision
+        - ETCD_AUTO_COMPACTION_RETENTION=1000
+        - ETCD_QUOTA_BACKEND_BYTES=4294967296
+        - ETCD_SNAPSHOT_COUNT=50000
+      volumes:
+        - ./milvus/etcd:/etcd
+      command: etcd -advertise-client-urls=http://127.0.0.1:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+      #      healthcheck:
+      #  test: ["CMD", "etcdctl", "endpoint", "health"]
+      #  interval: 30s
+      #  timeout: 20s
+      #  retries: 3
+    
+    milvus-minio:
+      container_name: milvus-minio
+      image: aicyber2023/minio:RELEASE.2023-03-20T20-16-18Z
+      environment:
+        MINIO_ACCESS_KEY: minioadmin
+        MINIO_SECRET_KEY: minioadmin
+      ports:
+        - "39001:9001"
+        - "39000:9000"
+      volumes:
+        - ./milvus/minio:/minio_data
+      command: minio server /minio_data --console-address ":9001"
+      #   healthcheck:
+      #  test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      #  interval: 30s
+      #  timeout: 20s
+      #  retries: 3
+
+    milvus-standalone:
+      container_name: milvus-standalone
+      image: aicyber2023/milvus:v2.2.13
+      command: ["milvus", "run", "standalone"]
+      security_opt:
+        - seccomp:unconfined
+      environment:
+        ETCD_ENDPOINTS: milvus-etcd:2379
+        MINIO_ADDRESS: milvus-minio:9000
+      volumes:
+        - ./milvus/milvus:/var/lib/milvus
+          #  healthcheck:
+          #  test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+          #        interval: 30s
+          #        start_period: 90s
+          #  timeout: 20s
+          #     retries: 3
+      ports:
+        - "39530:19530"
+        - "39091:9091"
+      depends_on:
+        - "milvus-etcd"
+        - "milvus-minio"
+
+    text-generation-webui:
+      container_name: text-generation-webui
+      image: aicyber2023/acs-textgen:v4
+      environment:
+        TORCH_CUDA_ARCH_LIST: 7.5
+        CLI_ARGS: "--model llama-7b-4bit --wbits 4 --listen --auto-devices"
+        HOST_PORT: 27860
+        CONTAINER_PORT: 7860
+        HOST_API_PORT: 25000
+        CONTAINER_API_PORT: 5000
+        HOST_API_STREAM_PORT: 25005
+        CONTAINER_API_STREAM_PORT: 5005
+        WEBUI_VERSION: HEAD
+      ports:
+        - "${HOST_PORT:-27860}:${CONTAINER_PORT:-7860}"
+        - "${HOST_API_PORT:-25000}:${CONTAINER_API_PORT:-5000}"
+        - "${HOST_API_STREAM_PORT:-25005}:${CONTAINER_API_STREAM_PORT:-5005}"
+      volumes:
+        - ./textgen/characters:/app/characters
+        - ./textgen/extensions:/app/extensions
+        - ./textgen/loras:/app/loras
+        - ./textgen/models:/app/models
+        - ./textgen/presets:/app/presets
+        - ./textgen/prompts:/app/prompts
+        - ./textgen/softprompts:/app/softprompts
+        - ./textgen/training:/app/training
+        - ./textgen/cloudflared:/etc/cloudflared
+      deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                count: 1
+                capabilities: [gpu]

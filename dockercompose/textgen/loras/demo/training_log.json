@@ -1,0 +1,16 @@
+{
+  "base_model_name": "Chinese-Llama-2-7b",
+  "base_model_class": "LlamaForCausalLM",
+  "base_loaded_in_4bit": false,
+  "base_loaded_in_8bit": false,
+  "projections": "q, v",
+  "loss": 0.6507,
+  "learning_rate": 2e-05,
+  "epoch": 2.0,
+  "current_steps": 30,
+  "train_runtime": 4428.2988,
+  "train_samples_per_second": 0.065,
+  "train_steps_per_second": 0.001,
+  "total_flos": 1178391042588672.0,
+  "train_loss": 0.6507468223571777
+}
