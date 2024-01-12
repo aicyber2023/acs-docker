@@ -2,9 +2,9 @@
 
 ## docker目录说明：   
 
-  -dockerfile #存放dockerfile文件，可自行构建acs-api，acs-web,acs-pychat
+  dockerfile: 存放dockerfile文件，可自行构建acs-api, acs-web, acs-pychat
 
-  -dockercompose #存放挂载目录和docker-compose.yml ,可直接运行
+  dockercompose: 存放挂载目录和docker-compose.yml, 可直接运行
 
     docker-compose up -d 
     -docker-compose.yml  # docker-compose文件
