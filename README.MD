@@ -19,8 +19,9 @@
 
 ## text-generation-webui容器部署说明(也可以移步至官网自行部署)：
 
-1. text-generation-webui容器需要用gpu的机器上并且机器需要安装支持gpu的docker引擎，所以需要安装nvidia-container-toolkit。
-2. 挂载目录textgen/models需要自行下载模型数据
+1. text-generation-webui 容器需要部署在 GPU 的机器上，并且机器需要安装支持 GPU 的 docker 引擎，所以需要安装 nvidia-container-toolkit。
+2. 挂载目录 textgen/models 需要自行下载模型数据
+3. 网盘地址: https://pan.baidu.com/s/1K6xbrdnsQel_5691Ybqp9g?pwd=2hnp
   
 ## 安装nvidia-container-toolkit
   
