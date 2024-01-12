@@ -42,12 +42,14 @@ $ sudo apt update && sudo apt install -y nvidia-container-toolkit
 $ sudo systemctl restart docker
 ```
 
-## 测试安装成功
+## 安装成功测试
 
 ```bash
 $ sudo docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
 ```
 
   显示如下：
+
   版本信息： NVIDIA-SMI 515105.01Driver Version: 515.105.01CUDA Version: 11.7
+
   镜像基础包：nvidia/cuda:11.2.2-base-ubuntu18.04
