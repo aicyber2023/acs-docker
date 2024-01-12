@@ -8,7 +8,7 @@
 
     docker-compose up -d 
     -docker-compose.yml  # docker-compose文件
-    -acs-api  #后端挂载上传文件目录
+    -acs-api     #后端挂载上传文件目录
     -milvus      #mmilvus向量数据库挂载目录
     -mysql       #mysq挂载目录
     -redis       #redis挂载目录
