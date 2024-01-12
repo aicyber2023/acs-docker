@@ -1,4 +1,4 @@
-FROM zyharbor.rczy.cc/library/java-jdk-ttf:8.1
+FROM aicyber2023/java-jdk-ttf:8.1
 #RUN mkdir /opt/app
 ADD  digital-employee-admin.jar /opt/app
 WORKDIR /opt/app
