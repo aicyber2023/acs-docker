@@ -2,17 +2,17 @@
 
 ## docker目录说明：   
 
-  dockerfile: 存放dockerfile文件，可自行构建acs-api, acs-web, acs-pychat
+  dockerfile: 存放 dockerfile 文件，可自行构建 acs-api, acs-web, acs-pychat
 
-  dockercompose: 存放挂载目录和docker-compose.yml, 可直接运行
+  dockercompose: 存放挂载目录和 docker-compose.yml, 可直接运行
 
     docker-compose up -d 
     -docker-compose.yml  # docker-compose文件
     -acs-api  #后端挂载上传文件目录
-    -milvus   #mmilvus向量数据库挂载目录
-    -mysql  #mysq挂载目录
-    -redis #redis挂载目录
-    -textgen  #textgen挂载目录
+    -milvus      #mmilvus向量数据库挂载目录
+    -mysql       #mysq挂载目录
+    -redis       #redis挂载目录
+    -textgen     #textgen挂载目录
        #-models  #模型数据目录，需要单独下载
     
 
