@@ -53,3 +53,9 @@ $ sudo docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
   版本信息： NVIDIA-SMI 515105.01Driver Version: 515.105.01CUDA Version: 11.7
 
   镜像基础包：nvidia/cuda:11.2.2-base-ubuntu18.04
+
+## 相关项目
+
+[奥图大模型客服机器人管理后台](https://github.com/aicyber2023/ai-customer-service-admin)
+
+[奥图大模型客服机器人对话端](https://github.com/aicyber2023/ai-customer-service-chat)
