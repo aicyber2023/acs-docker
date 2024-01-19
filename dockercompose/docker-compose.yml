@@ -65,7 +65,7 @@ services:
 
     acs-pychat:
       container_name: acs-pychat
-      image: aicyber2023/acs-pychat:v0.0.1
+      image: aicyber2023/acs-pychat:v0.0.2
       links:
         - milvus-standalone
       depends_on:
