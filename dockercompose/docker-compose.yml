@@ -2,9 +2,12 @@ version: '3'
 services:
     acs-web:
       container_name: acs-web
-      image: aicyber2023/acs-web:v0.0.1
+      image: aicyber2023/acs-web:v0.0.3
       environment:
         - TZ=Asia/Shanghai
+      volumes:
+        - ./acs-web/config/customer-service-chat/url.ts:/opt/customer-service-chat/url.ts
+        - ./acs-web/config/customer-service-server/config.js:/opt/customer-service-server/config.js
       ports:
         - "28001:28001"
         - "28002:28002"
