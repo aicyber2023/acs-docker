@@ -58,4 +58,7 @@ $ sudo docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
 
 [奥图大模型客服机器人管理后台](https://github.com/aicyber2023/ai-customer-service-admin)
 
+    账号：admin
+    密码：admin123
+
 [奥图大模型客服机器人对话端](https://github.com/aicyber2023/ai-customer-service-chat)
