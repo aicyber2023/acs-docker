@@ -137,7 +137,7 @@ services:
 
     text-generation-webui:
       container_name: text-generation-webui
-      image: aicyber2023/acs-textgen:v4
+      image: aicyber2023/acs-textgen:v1
       environment:
         TORCH_CUDA_ARCH_LIST: 7.5
         CLI_ARGS: "--model Atom-7B-Chat --loader transformers --wbits 4 --listen --auto-devices"
