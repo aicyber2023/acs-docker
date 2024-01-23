@@ -2,9 +2,9 @@
 
 ## docker目录介绍：   
 
-# dockerfile: 存放 dockerfile 文件，可自行构建 acs-api, acs-web, acs-pychat
+### dockerfile: 存放 dockerfile 文件，可自行构建 acs-api, acs-web, acs-pychat
 
-# dockercompose: 存放挂载目录和 docker-compose.yml, 可直接运行
+### dockercompose: 存放挂载目录和 docker-compose.yml, 可直接运行
   	-docker-compose.yml  # docker-compose文件
   	-acs-web     #前端挂载配置文件
  	-acs-api     #后端挂载上传文件目录
@@ -19,56 +19,56 @@
 ### docker环境安装+nvidia-container-toolkit插件安装
 
 
-# 安装docker环境： 
+#### 安装docker环境： 
 apt install docker -y
 
-# 安装nvidia-container-toolkit插件(容器支持GPU)
-# 配置nvidia-docker源
+#### 安装nvidia-container-toolkit插件(容器支持GPU)
+#### 配置nvidia-docker源
 
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 
-# 安装nvidia-container-toolkit插件 
+### 安装nvidia-container-toolkit插件 
  apt install -y nvidia-container-toolkit
 
-# 启动docker 
+### 启动docker 
 systemctl start docker
 
-# 测试nvidia-container-toolkit插件是否安装成功
+#### 测试nvidia-container-toolkit插件是否安装成功
 docker run --gpus all nvidia/cuda:11.2.2-base-ubuntu18.04 nvidia-smi
 
-# 显示如下：
-# +-----------------------------------------------------------------------------+
-#| NVIDIA-SMI 515.105.01   Driver Version: 515.105.01   CUDA Version: 11.7     |
-#|-------------------------------+----------------------+----------------------+
-#| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-#| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-#|                               |                      |               MIG M. |
-#|===============================+======================+======================|
-#|   0  NVIDIA GeForce ...  Off  | 00000000:02:00.0  On |                  N/A |
-#|  0%   26C    P8    34W / 370W |  14652MiB / 24576MiB |     35%      Default |
-#|                               |                      |                  N/A |
-#+-------------------------------+----------------------+----------------------+
-#
-#+-----------------------------------------------------------------------------+
-#| Processes:                                                                  |
-#|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-#|        ID   ID                                                   Usage      |
-#|=============================================================================|
-#|    0   N/A  N/A      1076      G   /usr/lib/xorg/Xorg                 26MiB |
-#|    0   N/A  N/A      1142      G   /usr/bin/gnome-shell               93MiB |
-#|    0   N/A  N/A      1987      G   /usr/lib/xorg/Xorg                335MiB |
-#|    0   N/A  N/A      2129      G   /usr/bin/gnome-shell               54MiB |
-#|    0   N/A  N/A     14985      C   python3.9                       14045MiB |
-#|    0   N/A  N/A     16622      G   ...nlogin/bin/sunloginclient        8MiB |
-#|    0   N/A  N/A     17532      G   ...token=5412487339909047007       13MiB |
-#|    0   N/A  N/A     29148      G   ...AAAAAAAA== --shared-files        8MiB |
-#|    0   N/A  N/A     30904      G   ...145939687547819517,262144       29MiB |
-#|    0   N/A  N/A     31862      G   /usr/lib/firefox/firefox           27MiB |
-#+-----------------------------------------------------------------------------+
+### 显示如下：
+ +-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.105.01   Driver Version: 515.105.01   CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:02:00.0  On |                  N/A |
+|  0%   26C    P8    34W / 370W |  14652MiB / 24576MiB |     35%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
 
-# 代表安装nvidia-container-toolkit成功
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1076      G   /usr/lib/xorg/Xorg                 26MiB |
+|    0   N/A  N/A      1142      G   /usr/bin/gnome-shell               93MiB |
+|    0   N/A  N/A      1987      G   /usr/lib/xorg/Xorg                335MiB |
+|    0   N/A  N/A      2129      G   /usr/bin/gnome-shell               54MiB |
+|    0   N/A  N/A     14985      C   python3.9                       14045MiB |
+|    0   N/A  N/A     16622      G   ...nlogin/bin/sunloginclient        8MiB |
+|    0   N/A  N/A     17532      G   ...token=5412487339909047007       13MiB |
+|    0   N/A  N/A     29148      G   ...AAAAAAAA== --shared-files        8MiB |
+|    0   N/A  N/A     30904      G   ...145939687547819517,262144       29MiB |
+|    0   N/A  N/A     31862      G   /usr/lib/firefox/firefox           27MiB |
++-----------------------------------------------------------------------------+
+
+ 代表安装nvidia-container-toolkit成功
 		
 ### 部署代码下载
 
