@@ -12,7 +12,7 @@
   	-mysql       #mysq挂载目录
   	-redis       #redis挂载目录
   	-textgen     #textgen挂载目录
-  	-models  #模型数据目录，需要单独下载，默认使用Atom-7B-Chat模型，只需要下载Atom-7B-Chat目录和 config.yaml文件即可
+  	-textgen/models  #模型数据目录，需要单独下载，默认使用Atom-7B-Chat模型，只需要下载Atom-7B-Chat目录和 config.yaml文件即可
 
 ## 操作步骤：
 
@@ -35,38 +35,38 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 ### 启动docker 
 systemctl start docker
 
-#### 测试nvidia-container-toolkit插件是否安装成功
+### 测试nvidia-container-toolkit插件是否安装成功
 docker run --gpus all nvidia/cuda:11.2.2-base-ubuntu18.04 nvidia-smi
 
 ### 显示如下：
- +-----------------------------------------------------------------------------+
-| NVIDIA-SMI 515.105.01   Driver Version: 515.105.01   CUDA Version: 11.7     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  NVIDIA GeForce ...  Off  | 00000000:02:00.0  On |                  N/A |
-|  0%   26C    P8    34W / 370W |  14652MiB / 24576MiB |     35%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|    0   N/A  N/A      1076      G   /usr/lib/xorg/Xorg                 26MiB |
-|    0   N/A  N/A      1142      G   /usr/bin/gnome-shell               93MiB |
-|    0   N/A  N/A      1987      G   /usr/lib/xorg/Xorg                335MiB |
-|    0   N/A  N/A      2129      G   /usr/bin/gnome-shell               54MiB |
-|    0   N/A  N/A     14985      C   python3.9                       14045MiB |
-|    0   N/A  N/A     16622      G   ...nlogin/bin/sunloginclient        8MiB |
-|    0   N/A  N/A     17532      G   ...token=5412487339909047007       13MiB |
-|    0   N/A  N/A     29148      G   ...AAAAAAAA== --shared-files        8MiB |
-|    0   N/A  N/A     30904      G   ...145939687547819517,262144       29MiB |
-|    0   N/A  N/A     31862      G   /usr/lib/firefox/firefox           27MiB |
-+-----------------------------------------------------------------------------+
+	 +-----------------------------------------------------------------------------+
+	| NVIDIA-SMI 515.105.01   Driver Version: 515.105.01   CUDA Version: 11.7     |
+	|-------------------------------+----------------------+----------------------+
+	| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+	| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+	|                               |                      |               MIG M. |
+	|===============================+======================+======================|
+	|   0  NVIDIA GeForce ...  Off  | 00000000:02:00.0  On |                  N/A |
+	|  0%   26C    P8    34W / 370W |  14652MiB / 24576MiB |     35%      Default |
+	|                               |                      |                  N/A |
+	+-------------------------------+----------------------+----------------------+
+	
+	+-----------------------------------------------------------------------------+
+	| Processes:                                                                  |
+	|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+	|        ID   ID                                                   Usage      |
+	|=============================================================================|
+	|    0   N/A  N/A      1076      G   /usr/lib/xorg/Xorg                 26MiB |
+	|    0   N/A  N/A      1142      G   /usr/bin/gnome-shell               93MiB |
+	|    0   N/A  N/A      1987      G   /usr/lib/xorg/Xorg                335MiB |
+	|    0   N/A  N/A      2129      G   /usr/bin/gnome-shell               54MiB |
+	|    0   N/A  N/A     14985      C   python3.9                       14045MiB |
+	|    0   N/A  N/A     16622      G   ...nlogin/bin/sunloginclient        8MiB |
+	|    0   N/A  N/A     17532      G   ...token=5412487339909047007       13MiB |
+	|    0   N/A  N/A     29148      G   ...AAAAAAAA== --shared-files        8MiB |
+	|    0   N/A  N/A     30904      G   ...145939687547819517,262144       29MiB |
+	|    0   N/A  N/A     31862      G   /usr/lib/firefox/firefox           27MiB |
+	+-----------------------------------------------------------------------------+
 
  代表安装nvidia-container-toolkit成功
 		
