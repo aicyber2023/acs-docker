@@ -20,9 +20,9 @@
 
 
 # 安装docker环境： 
-apt install docker   
+apt install docker -y
 
-# 安装nvidia-container-toolkit插件（容器支持GPU
+# 安装nvidia-container-toolkit插件(容器支持GPU)
 # 配置nvidia-docker源
 
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
@@ -35,15 +35,40 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 # 启动docker 
 systemctl start docker
 
-# 测试nvidia-container-toolkit插件安装是否成功
-docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
+# 测试nvidia-container-toolkit插件是否安装成功
+docker run --gpus all nvidia/cuda:11.2.2-base-ubuntu18.04 nvidia-smi
 
 # 显示如下：
-# 版本信息： NVIDIA-SMI 515105.01Driver Version: 515.105.01CUDA Version: 11.7
-# xxx
-# xxx
-# xxx
-# 代表安装成功
+# +-----------------------------------------------------------------------------+
+#| NVIDIA-SMI 515.105.01   Driver Version: 515.105.01   CUDA Version: 11.7     |
+#|-------------------------------+----------------------+----------------------+
+#| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+#| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+#|                               |                      |               MIG M. |
+#|===============================+======================+======================|
+#|   0  NVIDIA GeForce ...  Off  | 00000000:02:00.0  On |                  N/A |
+#|  0%   26C    P8    34W / 370W |  14652MiB / 24576MiB |     35%      Default |
+#|                               |                      |                  N/A |
+#+-------------------------------+----------------------+----------------------+
+#
+#+-----------------------------------------------------------------------------+
+#| Processes:                                                                  |
+#|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+#|        ID   ID                                                   Usage      |
+#|=============================================================================|
+#|    0   N/A  N/A      1076      G   /usr/lib/xorg/Xorg                 26MiB |
+#|    0   N/A  N/A      1142      G   /usr/bin/gnome-shell               93MiB |
+#|    0   N/A  N/A      1987      G   /usr/lib/xorg/Xorg                335MiB |
+#|    0   N/A  N/A      2129      G   /usr/bin/gnome-shell               54MiB |
+#|    0   N/A  N/A     14985      C   python3.9                       14045MiB |
+#|    0   N/A  N/A     16622      G   ...nlogin/bin/sunloginclient        8MiB |
+#|    0   N/A  N/A     17532      G   ...token=5412487339909047007       13MiB |
+#|    0   N/A  N/A     29148      G   ...AAAAAAAA== --shared-files        8MiB |
+#|    0   N/A  N/A     30904      G   ...145939687547819517,262144       29MiB |
+#|    0   N/A  N/A     31862      G   /usr/lib/firefox/firefox           27MiB |
+#+-----------------------------------------------------------------------------+
+
+# 代表安装nvidia-container-toolkit成功
 		
 ### 部署代码下载
 
@@ -63,7 +88,7 @@ git clone https://github.com/aicyber2023/acs-docker.git
 
 - 进行到acs-docker/dockercompose/目录， dockercompose目录内所有目录不要进行修改和删除，以免影响正常启动。
 - 
-- 运行 ```docker-compose up -d``` 命令
+- 运行 ```docker-compose up -d``` 命令 (docker-compose版本为1.29.2)
 
 	- 首先会自动下载镜像，下载完镜像会自动启动，过程可能会等几分钟，根据当前网络环境决定。
 
