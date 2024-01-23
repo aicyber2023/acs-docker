@@ -20,24 +20,28 @@
 
 
 #### 安装docker环境： 
+```bash
 apt install docker -y
-
+```
 #### 安装nvidia-container-toolkit插件(容器支持GPU)
 #### 配置nvidia-docker源
-
+```bash
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-
+```
 ### 安装nvidia-container-toolkit插件 
- apt install -y nvidia-container-toolkit
-
+```bash
+apt install -y nvidia-container-toolkit
+```
 ### 启动docker 
+```bash
 systemctl start docker
-
+```
 ### 测试nvidia-container-toolkit插件是否安装成功
+```bash
 docker run --gpus all nvidia/cuda:11.2.2-base-ubuntu18.04 nvidia-smi
-
+```
 ### 显示如下：
 	 +-----------------------------------------------------------------------------+
 	| NVIDIA-SMI 515.105.01   Driver Version: 515.105.01   CUDA Version: 11.7     |
