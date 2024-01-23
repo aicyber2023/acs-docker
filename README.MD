@@ -8,8 +8,9 @@
   	-docker-compose.yml  # docker-compose文件
   	-acs-web     #前端挂载配置文件
  	-acs-api     #后端挂载上传文件目录
-  	-milvus      #mmilvus向量数据库挂载目录
+  	-milvus      #milvus向量数据库挂载目录
   	-mysql       #mysq挂载目录
+        -mysql/init  #mysql初始化目录，里面有一个初始化sql文件de_customer_service.sql，首次启动mysql会自动初始化，容器启动初始化完成后可以删除
   	-redis       #redis挂载目录
   	-textgen     #textgen挂载目录
   	-textgen/models  #模型数据目录，需要单独下载，默认使用Atom-7B-Chat模型，只需要下载Atom-7B-Chat目录和 config.yaml文件即可
