@@ -1,4 +1,4 @@
-FROM aicyber2023/acs-python:3.9:v1
+FROM aicyber2023/acs-python3.9:v1
 
 COPY ./aicyber_pychat  /opt/app/aicyber_pychat
 
