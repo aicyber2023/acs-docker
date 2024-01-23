@@ -80,7 +80,7 @@ git clone https://github.com/aicyber2023/acs-docker.git
 
 - 说明： text-generation-webui 容器需要部署在 GPU 的机器上，并且机器需要安装支持 GPU 的 docker 引擎，所以需要安装 nvidia-container-toolkit。
 
-- 模型数据下载，默认使用Atom-7B-Chat模型，只需要下载Atom-7B-Chat目录和 config.yaml文件即可，放到acs-docker/dockercompose/textge/models/目录
+- 模型数据下载，默认使用Atom-7B-Chat模型，只需要下载Atom-7B-Chat目录和 config.yaml文件即可，放到acs-docker/dockercompose/textgen/models/目录
 
 - 网盘地址： ```https://pan.baidu.com/s/1K6xbrdnsQel_5691Ybqp9g?pwd=2hnp```
  
