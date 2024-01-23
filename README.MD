@@ -2,10 +2,9 @@
 
 ## docker目录介绍：   
 
-1. dockerfile: 存放 dockerfile 文件，可自行构建 acs-api, acs-web, acs-pychat
+# dockerfile: 存放 dockerfile 文件，可自行构建 acs-api, acs-web, acs-pychat
 
-```bash
-dockercompose: 存放挂载目录和 docker-compose.yml, 可直接运行
+# dockercompose: 存放挂载目录和 docker-compose.yml, 可直接运行
   	-docker-compose.yml  # docker-compose文件
   	-acs-web     #前端挂载配置文件
  	-acs-api     #后端挂载上传文件目录
@@ -14,14 +13,12 @@ dockercompose: 存放挂载目录和 docker-compose.yml, 可直接运行
   	-redis       #redis挂载目录
   	-textgen     #textgen挂载目录
   	-models  #模型数据目录，需要单独下载，默认使用Atom-7B-Chat模型，只需要下载Atom-7B-Chat目录和 config.yaml文件即可
-```
 
 ## 操作步骤：
 
 ### docker环境安装+nvidia-container-toolkit插件安装
 
 
-```bash
 # 安装docker环境： 
 apt install docker   
 
@@ -47,12 +44,11 @@ docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
 # xxx
 # xxx
 # 代表安装成功
-```
 		
 ### 部署代码下载
 
 ```bash
-git clone https://github.com/aicyber2023/aicyber2023.git  
+git clone https://github.com/aicyber2023/acs-docker.git  
 ``` 
 
 ### text-generation-webui部署模型数据准备
