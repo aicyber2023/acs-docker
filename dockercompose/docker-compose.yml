@@ -71,6 +71,8 @@ services:
       image: aicyber2023/acs-pychat:v0.0.3
       links:
         - milvus-standalone
+        - text-generation-webui
+        - acs-redis
       depends_on:
         - "milvus-standalone"
         - "text-generation-webui"
