@@ -101,7 +101,7 @@ git clone https://github.com/aicyber2023/acs-docker.git
   
 - 容器启动成功后，进行模型选择，这里默认选用 ```Atom-7B-Chat```模型。
  
-    - 访问```textgen```管理页面 ```http://127.0.0.1:27860``` 进行模型 load,点击 ```model``` 标签在下拉菜单选择 ```Atom-7B-Chat```，点右侧 ```load```,直到右侧显示 ```Successfully loaded Atom-7B-Chat```，代表模型设置成功。
+    - 访问```textgen```管理页面 ```http://127.0.0.1:27860``` 进行模型 load,点击 ```model``` 标签在下拉菜单选择 ```Atom-7B-Chat```，点右侧 ```load```,直到右侧显示 ```Successfully loaded Atom-7B-Chat```，代表模型设置成功,之后点击save setting 保存。
  
 - 登录到奥图大模型客服机器人管理后台
 
