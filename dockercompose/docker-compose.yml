@@ -68,7 +68,7 @@ services:
 
     acs-pychat:
       container_name: acs-pychat
-      image: aicyber2023/acs-pychat:v0.0.6
+      image: aicyber2023/acs-pychat:v0.0.7
       links:
         - milvus-standalone
         - text-generation-webui
