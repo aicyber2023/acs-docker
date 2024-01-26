@@ -128,3 +128,7 @@ git clone https://github.com/aicyber2023/acs-docker.git
     密码：admin123
 
 [奥图大模型客服机器人对话端](https://github.com/aicyber2023/ai-customer-service-chat)
+
+## API 调用
+
+[API 调用](https://github.com/aicyber2023/ai-customer-service-admin/blob/master/API.md)
