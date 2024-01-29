@@ -2,7 +2,7 @@ version: '3'
 services:
     acs-web:
       container_name: acs-web
-      image: aicyber2023/acs-web:v0.0.3
+      image: aicyber2023/acs-web:v0.0.4
       environment:
         - TZ=Asia/Shanghai
       volumes:
@@ -19,7 +19,7 @@ services:
 
     acs-api:
       container_name: acs-api
-      image: aicyber2023/acs-api:v0.0.1
+      image: aicyber2023/acs-api:v0.0.2
       environment:
         - TZ=Asia/Shanghai
       volumes:
