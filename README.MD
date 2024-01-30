@@ -110,15 +110,15 @@ git clone https://github.com/aicyber2023/acs-docker.git
 		```登录权限： 账号：admin   密码：admin123```
 		
 	- 奥图大模型客服机器人对话端访问地址：http://127.0.0.1:28001
+
+    - 前端页面如果出现502，需要重启acs-api,是由于mysql初始化需要时间导致acs-api连不上mysql
+        - 执行重启命令 ``` docker restart acs-api ``` 
 		
 - 至此部署完成	
 
 ### 部署网络环境介绍
 
 #### 默认部署，只能通过部署机器本机访问
-
-#### 局域网访问
-- 需要更改acs-docker/dockercompose/acs-web/config/customer-service-chat/url.ts文件和acs-docker/dockercompose/acs-web/config/customer-service-server/config.js 两个文件，把127.0.0.1改为部署主机的局域网IP(如：192.168.1.2)
 		
 ## 相关项目
 
