@@ -87,7 +87,7 @@ git clone https://github.com/aicyber2023/acs-docker.git
 
 - 模型数据下载，默认使用Atom-7B-Chat模型，只需要下载Atom-7B-Chat目录和 config.yaml文件即可，放到acs-docker/dockercompose/textgen/models/目录
 
-- 网盘地址： ```https://pan.baidu.com/s/1K6xbrdnsQel_5691Ybqp9g?pwd=2hnp```
+- 网盘地址： ```链接: https://pan.baidu.com/s/1KajsPgjy59nc4PKTrDQ8Bw?pwd=khm4 提取码: khm4 ```
  
 ### 启动项目容器
 
