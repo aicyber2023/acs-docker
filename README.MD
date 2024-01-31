@@ -132,3 +132,9 @@ git clone https://github.com/aicyber2023/acs-docker.git
 ## API 调用
 
 [API 调用](https://github.com/aicyber2023/ai-customer-service-admin/blob/master/API.md)
+
+## 部署与使用视频
+
+[奥图智能客服管理平台使用说明](https://www.bilibili.com/video/BV1Me41177Ww/)
+
+[奥图智能客服后台代码部署教程](https://www.bilibili.com/video/BV1mp421Z7TG/)
